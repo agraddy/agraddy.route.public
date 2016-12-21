@@ -12,7 +12,7 @@ process.chdir('test');
 
 	routes.get = {};
 
-	pub(routes.get).on('loaded', function() {
+	pub(routes.get, 'public').on('loaded', function() {
 		res.on('finish', function() {
 			tap.assert.equal(res._body, 'about\n', 'Should serve the about.txt file.');
 		});
@@ -39,13 +39,29 @@ process.chdir('test');
 		cb();
 	}
 
-	pub(routes.get, [header]).on('loaded', function() {
+	pub(routes.get, 'public', [header]).on('loaded', function() {
 		res.on('finish', function() {
 			tap.assert.deepEqual(res._headers[0], {"X-Test": "test"}, 'Should get header from luggage plugin.');
 			tap.assert.equal(res._body, 'second\n', 'Should get file contents.');
 		});
 
 		routes.get['/sub/second.css']({}, res);
+	});
+})();
+
+(function() {
+	var routes = {};
+	var res = response();
+
+	routes.get = {};
+
+	function header(req, res, lug, cb) {
+		res.setHeader('X-Test', 'test');
+		cb();
+	}
+
+	pub(routes.get, 'doesnotexist').on('loaded', function() {
+		tap.assert.deepEqual(routes.get, {}, 'Should not add any routes when the directory does not exist.');
 	});
 })();
 
