@@ -20,7 +20,7 @@
     "agraddy.test.tap": "^0.2.0"
   },
   "dependencies": {
-    "agraddy.async.each": "^0.3.0",
+    "agraddy.async.each": "^0.4.0",
     "agraddy.route.file": "^0.2.0",
     "agraddy.test.res": "^0.4.0"
   }
