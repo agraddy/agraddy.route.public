@@ -10,13 +10,18 @@
     "test": "node ./test"
   },
   "repository": {
-	  "type": "git",
-	  "url": "git://github.com/agraddy/agraddy.route.public.git"
+    "type": "git",
+    "url": "git://github.com/agraddy/agraddy.route.public.git"
   },
   "bugs": {
-	  "url": "https://github.com/agraddy/agraddy.route.public/issues"
+    "url": "https://github.com/agraddy/agraddy.route.public/issues"
   },
   "devDependencies": {
-	  "agraddy.test.tap": "^0.2.0"
+    "agraddy.test.tap": "^0.2.0"
+  },
+  "dependencies": {
+    "agraddy.async.each": "^0.2.0",
+    "agraddy.route.file": "^0.2.0",
+    "agraddy.test.res": "^0.4.0"
   }
 }
